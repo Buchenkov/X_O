@@ -1,0 +1,75 @@
+import time
+def x_o():
+    count = 1
+    a0, a1, a2, b0, b1, b2, c0, c1, c2 = '-', '-', '-', '-', '-', '-', '-', '-', '-'
+
+    def print_con():
+        print(f'\t  0 1 2''\n'
+              f'\t0 {a0} {a1} {a2} \n'
+              f'\t1 {b0} {b1} {b2} \n'
+              f'\t2 {c0} {c1} {c2}')
+
+    print_con()
+    while 1:
+
+        if count % 2 != 0:
+            var = 'X'
+        else:
+            var = 'O'
+        x = str(input(f'Ваш ход ({var}) - '))
+        if x == '00' and a0 == '-':
+            a0 = var
+        elif x == '01' and a1 == '-':
+            a1 = var
+        elif x == '02' and a2 == '-':
+            a2 = var
+        elif x == '10' and b0 == '-':
+            b0 = var
+        elif x == '11' and b1 == '-':
+            b1 = var
+        elif x == '12' and b2 == '-':
+            b2 = var
+        elif x == '20' and c0 == '-':
+            c0 = var
+        elif x == '21' and c1 == '-':
+            c1 = var
+        elif x == '22' and c2 == '-':
+            c2 = var
+        else:
+            print('Ошибка ввода!')
+            continue
+        count += 1
+        print()
+        print_con()
+        if a0 != '-' and b1 != '-' and count > 4:
+            if ((a0 == 'X' and a1 == 'X' and a2 == 'X') or (b0 == 'X' and b1 == 'X' and b2 == 'X') or
+                    (c0 == 'X' and c1 == 'X' and c2 == 'X') or (a0 == 'X' and b0 == 'X' and c0 == 'X') or
+                    (a1 == 'X' and b1 == 'X' and c1 == 'X') or (a2 == 'X' and b2 == 'X' and c2 == 'X') or
+                    (a0 == 'X' and b1 == 'X' and c2 == 'X') or (a2 == 'X' and b1 == 'X' and c0 == 'X')):
+                print('Поздравляем! Крестики выйграли!')
+                break
+            if ((a0 == 'O' and a1 == 'O' and a2 == 'O') or (b0 == 'O' and b1 == 'O' and b2 == 'O') or
+                    (c0 == 'O' and c1 == 'O' and c2 == 'O') or (a0 == 'O' and b0 == 'O' and c0 == 'O') or
+                    (a1 == 'O' and b1 == 'O' and c1 == 'O') or (a2 == 'O' and b2 == 'O' and c2 == 'O') or
+                    (a0 == 'O' and b1 == 'O' and c2 == 'O') or (a2 == 'O' and b1 == 'O' and c0 == 'O')):
+                print('Поздравляем! Нолики выйграли!')
+                break
+            if count == 10:
+                print('Ничья!')
+                break
+
+
+# start
+print('\t«Крестики-нолики»!')
+print('\tПравила: ')
+print('Вводите две цифры, первая - строка, а вторая столбец. Первыми ходят крестики \n')
+
+while 1:
+    print('\t\t Игра «Крестики-нолики»!\n')
+    time.sleep(2)  # Сон в 2 секунды
+    start = input('чтобы играть нажмите "y", если нет другую клавишу - ')
+    if start == 'y':
+        x_o()
+    else:
+        print('\n\t\tДо свидания!')
+        break
